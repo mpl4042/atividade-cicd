@@ -7,5 +7,5 @@ test('Deve somar dois números corretamente', () => {
 });
 
 test('Deve gerar uma mensagem de boas-vindas', () => {
-  assert.equal(mensagemDeBoasVindas('Ana'), 'Olá, Michele! Bem-vindo(a) ao projeto CI/CD.');
+  assert.equal(mensagemDeBoasVindas('Michele'), 'Olá, Michele! Bem-vindo(a) ao projeto CI/CD.');
 });
