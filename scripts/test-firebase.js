@@ -68,9 +68,19 @@ async function main() {
   console.log('OK: dado gravado no Cloud Firestore.');
 
   // 3) Lê o documento e confirma o valor gravado.
-  const readResponse = await fetch(documentUrl, {
-    headers: { 'Authorization': `Bearer ${loginData.idToken}` }
-  });
+//  const readResponse = await fetch(documentUrl, {
+//    headers: { 'Authorization': `Bearer ${loginData.idToken}` }
+//  });
+
+  // 3) Lê o documento e confirma o valor gravado.
+const readUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/users/${loginData.localId}`;
+
+const readResponse = await fetch(readUrl, {
+  headers: {
+    'Authorization': `Bearer ${loginData.idToken}`
+  }
+});
+  
   const readData = await readResponse.json();
   if (!readResponse.ok) {
     throw new Error(`Falha ao ler do Cloud Firestore: ${readData.error?.message || readResponse.status}`);
