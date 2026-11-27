@@ -6,7 +6,7 @@ const required = [
   'FIREBASE_PROJECT_ID',
   'FIREBASE_TEST_EMAIL',
   'FIREBASE_TEST_PASSWORD'
-];
+]; 
 
 const missing = required.filter((name) => !process.env[name]);
 if (missing.length) {
