@@ -2,9 +2,10 @@
   "name": "atividade-cicd-github-actions",
   "version": "1.0.0",
   "private": true,
-  "description": "Projeto didático para demonstrar CI/CD com GitHub Actions",
+  "description": "Projeto didático de CI/CD com GitHub Actions e Firebase",
   "scripts": {
     "test": "node --test",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "test:firebase": "node scripts/test-firebase.js"
   }
 }
