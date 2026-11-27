@@ -30,9 +30,24 @@ async function main() {
     }
   );
   const loginData = await loginResponse.json();
+ // if (!loginResponse.ok) {
+  //  throw new Error(`Falha no Firebase Authentication: ${loginData.error?.message || loginResponse.status}`);
+  //}
   if (!loginResponse.ok) {
-    throw new Error(`Falha no Firebase Authentication: ${loginData.error?.message || loginResponse.status}`);
-  }
+  const firebaseError = loginData.error?.message || loginResponse.status;
+
+  const messages = {
+    'API_KEY_INVALID': 'A API Key do Firebase é inválida.',
+    'EMAIL_NOT_FOUND': 'O e-mail de teste não está cadastrado.',
+    'INVALID_PASSWORD': 'A senha de teste está incorreta.',
+    'INVALID_LOGIN_CREDENTIALS': 'E-mail ou senha inválidos.',
+    'OPERATION_NOT_ALLOWED': 'O método de autenticação por e-mail e senha está desabilitado.'
+  };
+
+  throw new Error(
+    `Falha no Firebase Authentication: ${messages[firebaseError] || firebaseError}`
+  );
+}
   console.log('OK: usuário autenticado no Firebase Authentication.');
 
   // 2) Grava um campo de verificação no documento do próprio usuário.
